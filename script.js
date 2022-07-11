@@ -5,8 +5,7 @@ form.addEventListener('submit', (ev) => {
    const googleFormEndpoint = "https://docs.google.com/forms/d/e/1FAIpQLSe2eijer-fwEnIsLnLIuOJwJ4ohesx4ncojtgkRbviCq04DjQ/formResponse"
    let request = new XMLHttpRequest();
    request.open('POST', googleFormEndpoint, true);
-   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded", "Access-Control-Allow-Origin:*");
+   request.setRequestHeader("Access-Control-Allow-Origin","*");
 
    request.onload = function(data) {
         // handle request sent successfully

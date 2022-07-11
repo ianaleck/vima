@@ -2,10 +2,16 @@ const form = document.getElementById("credit-application-form");
 const button = document.getElementById("submit-btn");
 form.addEventListener('submit', (ev) => {
    ev.preventDefault();
-   const googleFormEndpoint = "https://docs.google.com/forms/d/e/1FAIpQLSe2eijer-fwEnIsLnLIuOJwJ4ohesx4ncojtgkRbviCq04DjQ/formResponse"
+   const googleFormEndpoint = "https://docs.google.com/forms/d/1djnT008kQPEYcpohfkS-cZ9bHpJRh5UpuyZcanuRqAg/formResponse"
+
    let request = new XMLHttpRequest();
    request.open('POST', googleFormEndpoint, true);
-   request.setRequestHeader("Access-Control-Allow-Origin","*");
+   //setform type forms
+   request.setRequestHeader('Accept',
+          'application/xml, text/xml, */*; q=0.01');
+   request.setRequestHeader('Content-type',
+          'application/x-www-form-urlencoded; charset=UTF-8');
+          request.setRequestHeader('Cache-Control', 'no-store')       
 
    request.onload = function(data) {
         // handle request sent successfully
@@ -25,7 +31,10 @@ form.addEventListener('submit', (ev) => {
         button.innerHTML = "Submit";
    };
 
-   request.send(new FormData(ev.target));
+   let formData = new FormData(ev.target);
+   formData.append("submit", "Submit");
+
+   request.send(formData);
 
    button.disabled = true;
    button.innerHTML = "Loading...";

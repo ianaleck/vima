@@ -2,10 +2,11 @@ const form = document.getElementById("credit-application-form");
 const button = document.getElementById("submit-btn");
 form.addEventListener('submit', (ev) => {
    ev.preventDefault();
-   const googleFormEndpoint = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSe2eijer-fwEnIsLnLIuOJwJ4ohesx4ncojtgkRbviCq04DjQ/formRespons";
+   const googleFormEndpoint = "https://docs.google.com/forms/d/e/1FAIpQLSe2eijer-fwEnIsLnLIuOJwJ4ohesx4ncojtgkRbviCq04DjQ/formResponse"
    let request = new XMLHttpRequest();
-   request.open('GET', googleFormEndpoint, true);
-   xmlhttp.setRequestHeader("Content-Type", 'application/x-www-form-urlencoded');
+   request.open('POST', googleFormEndpoint, true);
+   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded", "Access-Control-Allow-Origin:*");
 
    request.onload = function(data) {
         // handle request sent successfully
